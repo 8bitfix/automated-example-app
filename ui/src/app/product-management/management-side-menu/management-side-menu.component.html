@@ -1,0 +1,39 @@
+
+  <div class="overflow-y-auto">
+      <ul class="list-none p-2 m-0">
+          <li>
+              <a pRipple (click)="router.navigateByUrl('/product-management')"
+                 class="flex align-items-center cursor-pointer p-3 text-blue-500 hover:surface-100 border-round transition-colors transition-duration-150">
+                  <i class="pi pi-plus-circle mr-2"></i>
+                  <span class="font-medium">New Product</span>
+              </a>
+          </li>
+          <li>
+              <a pRipple (click)="router.navigateByUrl('/product-management/attributes')"
+                 class="flex align-items-center cursor-pointer p-3 text-700 hover:surface-100 border-round transition-colors transition-duration-150">
+                  <i class="pi pi-sliders-v mr-2"></i>
+                  <span class="font-medium">Add/Remove Attributes</span>
+                  <!-- <span class="inline-flex align-items-center justify-content-center ml-auto bg-blue-100 text-blue-900 border-circle" style="min-width: 1.5rem; height: 1.5rem">3</span> -->
+              </a>
+          </li>
+          <li>
+              <a pRipple (click)="router.navigateByUrl('/product-management/stock')"
+                 class="flex align-items-center cursor-pointer p-3 text-700 hover:surface-100 border-round transition-colors transition-duration-150">
+                  <i class="pi pi-table mr-2"></i>
+                  <span class="font-medium">Stock Management</span>
+              </a>
+          </li>
+          <li>
+              <a pRipple class="flex align-items-center cursor-pointer p-3 text-700 hover:surface-100 border-round transition-colors transition-duration-150">
+                  <i class="pi pi-money-bill mr-2"></i>
+                  <span class="font-medium">Sales</span>
+              </a>
+          </li>
+          <li>
+              <a pRipple class="flex align-items-center cursor-pointer p-3 text-700 hover:surface-100 border-round transition-colors transition-duration-150">
+                  <i class="pi pi-users mr-2"></i>
+                  <span class="font-medium">Customers</span>
+              </a>
+          </li>
+      </ul>
+  </div>

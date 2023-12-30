@@ -1,0 +1,5 @@
+<a #trigger class="layout-sidebar-button flex p-3 align-items-center text-600 hover:text-900
+                      font-medium border-round cursor-pointer"
+                      (click)="layoutService.onMenuToggle()">
+  <i class="pi text-3xl" [ngClass]="layoutService.state.sidebarVisible ? 'pi-times-circle' : 'pi-filter'"></i>
+</a>

@@ -1,0 +1,26 @@
+origins: http://localhost:4200
+issuer: http://localhost:8080/realms/curio
+
+server:
+  port: 8888
+
+com:
+  c4-soft:
+    springaddons:
+      oidc:
+        ops:
+          - iss: ${issuer}
+            username-claim: preferred_username
+            authorities:
+              - path: $.realm_access.roles
+                prefix: ROLE_
+              - path: $.resource_access.*.roles
+                prefix: ROLE_CLIENT_
+        resourceserver:
+          cors:
+            - path: /**
+              allowed-origin-patterns: ${origins}
+          permit-all:
+            - "/actuator/health/readiness"
+            - "/actuator/health/liveness"
+            - "/v3/api-docs/**"

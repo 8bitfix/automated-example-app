@@ -1,0 +1,281 @@
+databaseChangeLog:
+  - changeSet:
+      id:  create-test-data
+      author:  8bitfix
+      changes:
+        - insert:
+            tableName: BRAND
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: NAME
+                  value: test-brand
+
+        - insert:
+            tableName: SHIPPING_INFO
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: NAME
+                  value: 'test shipping info name'
+              - column:
+                  name: DESCRIPTION
+                  value: 'test shipping info description'
+              - column:
+                  name: PRICE
+                  value: 100.01
+
+        - insert:
+            tableName: PRODUCT
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: NAME
+                  value: 'test product'
+              - column:
+                  name: DESCRIPTION
+                  value: 'test product description'
+              - column:
+                  name: PRICE
+                  value: 999.99
+              - column:
+                  name: BRAND
+                  valueComputed: "(SELECT b.id FROM BRAND b WHERE b.name = 'test-brand')"
+              - column:
+                  name: SHIPPING_INFO
+                  valueComputed: "(SELECT s.id FROM SHIPPING_INFO s WHERE s.name = 'test shipping info name')"
+
+        - insert:
+            tableName: CARE
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: INSTRUCTIONS
+                  value: 'test care instructions'
+
+        - insert:
+            tableName: CATEGORY
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: NAME
+                  value: 'test category'
+
+        - insert:
+            tableName: COLOUR
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: NAME
+                  value: 'red'
+
+        - insert:
+            tableName: COLOUR
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: NAME
+                  value: 'yellow'
+
+        - insert:
+            tableName: HIGHLIGHT
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: VALUE
+                  value: 'test highlight'
+
+        - insert:
+            tableName: IMAGE
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: DESCRIPTION
+                  value: 'test image description'
+              - column:
+                  name: LOCATION
+                  value: 'test image location'
+
+        - insert:
+            tableName: MATERIAL
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: NAME
+                  value: 'test material'
+
+        - insert:
+            tableName: REVIEW
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: RATING
+                  value: 5
+              - column:
+                  name: VALUE
+                  value: 'test review value'
+
+        - insert:
+            tableName: SIZE
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: VALUE
+                  value: 'XXL'
+
+        - insert:
+            tableName: SIZE
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: VALUE
+                  value: 'M'
+
+        - insert:
+            tableName: STOCK
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: SIZE
+                  valueComputed: "(SELECT s.id FROM SIZE s WHERE s.value = 'M')"
+              - column:
+                  name: COLOUR
+                  valueComputed: "(SELECT c.id FROM COLOUR c WHERE c.name = 'red')"
+              - column:
+                  name: AMOUNT
+                  value: 3
+
+        - insert:
+            tableName: STOCK
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: SIZE
+                  valueComputed: "(SELECT s.id FROM SIZE s WHERE s.value = 'M')"
+              - column:
+                  name: COLOUR
+                  valueComputed: "(SELECT c.id FROM COLOUR c WHERE c.name = 'yellow')"
+              - column:
+                  name: AMOUNT
+                  value: 1
+
+        - insert:
+            tableName: STOCK
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: SIZE
+                  valueComputed: "(SELECT s.id FROM SIZE s WHERE s.value = 'XXL')"
+              - column:
+                  name: COLOUR
+                  valueComputed: "(SELECT c.id FROM COLOUR c WHERE c.name = 'yellow')"
+              - column:
+                  name: AMOUNT
+                  value: 0
+
+        - insert:
+            tableName: USER_LIKE
+            columns:
+              - column:
+                  name: ID
+                  valueSequenceNext: HIBERNATE_SEQUENCE
+              - column:
+                  name: USER_ID
+                  value: "00011kkkaaa"
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+
+        - insert:
+            tableName: PRODUCT_CATEGORY
+            columns:
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: CATEGORY
+                  valueComputed: "(SELECT c.id FROM CATEGORY c WHERE c.name = 'test category')"
+
+        - insert:
+            tableName: PRODUCT_COLOUR
+            columns:
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: COLOUR
+                  valueComputed: "(SELECT c.id FROM COLOUR c WHERE c.name = 'yellow')"
+
+        - insert:
+            tableName: PRODUCT_MATERIAL
+            columns:
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: MATERIAL
+                  valueComputed: "(SELECT m.id FROM MATERIAL m WHERE m.name = 'test material')"
+
+        - insert:
+            tableName: PRODUCT_SIZE
+            columns:
+              - column:
+                  name: PRODUCT
+                  valueComputed: "(SELECT p.id FROM PRODUCT p WHERE p.name = 'test product')"
+              - column:
+                  name: SIZE
+                  valueComputed: "(SELECT s.id FROM SIZE s WHERE s.value = 'M')"
+

@@ -1,0 +1,19 @@
+<ng-container *ngFor="let item of data">
+  <ng-container [ngSwitch]="item.attributes.name">
+    <ng-container *ngSwitchCase="'SpecialCollectionComponent'">
+      <app-special-collection [url]="baseCmsUrl + item.attributes.url"></app-special-collection>
+    </ng-container>
+    <ng-container *ngSwitchCase="'StoryComponent'">
+      <app-story [url]="baseCmsUrl + item.attributes.url"></app-story>
+    </ng-container>
+    <ng-container *ngSwitchCase="'SubscribeComponent'">
+      <app-subscribe [url]="baseCmsUrl + item.attributes.url"></app-subscribe>
+    </ng-container>
+    <ng-container *ngSwitchCase="'PromoComponent'">
+      <app-promo [url]="baseCmsUrl + item.attributes.url"></app-promo>
+    </ng-container>
+    <ng-container *ngSwitchCase="'PopularComponent'">
+      <app-popular [url]="baseCmsUrl + item.attributes.url"></app-popular>
+    </ng-container>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  liquibase:
+    enabled: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/curio
+    username: curio
+    password: curio
+    driverClassName: org.postgresql.Driver

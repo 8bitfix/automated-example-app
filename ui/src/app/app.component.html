@@ -1,0 +1,30 @@
+<app-topbar (buttonEvent)="handleTopbarButton($event)"
+              [isAuthenticated]="isAuthenticated"
+              class="fixed-header-bar">
+</app-topbar>
+<div class="layout-wrapper" [ngClass]="containerClass">
+  <div class="layout-sidebar">
+      <app-sidebar [template]="sidebarmenu">
+        <ng-template #sidebarmenu>
+          <ng-container [ngSwitch]="true">
+            <app-management-side-menu *ngSwitchCase="router.url.startsWith('/product-management')"></app-management-side-menu>
+            <app-product-filter *ngSwitchCase="router.url === '/catalogue'"></app-product-filter>
+          </ng-container>
+        </ng-template>
+      </app-sidebar>
+  </div>
+  <ng-container [ngSwitch]="true">
+    <app-side-menu-button *ngSwitchCase="router.url === '/catalogue'"></app-side-menu-button>
+    <app-side-menu-button *ngSwitchCase="router.url.startsWith('/product-management')"></app-side-menu-button>
+  </ng-container>
+
+
+  <div class="layout-main-container">
+      <div class="layout-main">
+          <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+  </div>
+  <div class="layout-mask"></div>
+</div>
+<app-basket *ngIf="isAuthenticated" [visibleDialog]="basketOpen" (basketClosed)="basketOpen=false"></app-basket>

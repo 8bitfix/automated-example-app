@@ -1,0 +1,11 @@
+<div *ngIf="data" class="surface-50 px-4 py-8 md:px-6 lg:px-8">
+  <span class="text-900 text-3xl font-medium block text-center lg:text-left">{{data.attributes.title}}</span>
+  <span class="text-600 text-2xl block mt-4 text-center lg:text-left">{{data.attributes.text}}</span>
+  <div class="mt-4 mx-auto lg:mx-0" style="max-width:38rem;">
+    <div class="p-inputgroup">
+        <input type="text" pInputText placeholder="{{data.attributes.placeholder}}">
+        <button type="button" pButton pRipple label="{{data.attributes.buttonText}}" class="surface-900 text-0 px-5 border-none"></button>
+    </div>
+  </div>
+  <p-divider layout="horizontal" class="surface-border"></p-divider>
+</div>

@@ -1,0 +1,72 @@
+
+<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+  <div class="text-900 font-medium text-xl mb-3">Create Product</div>
+  <div class="surface-card p-4 shadow-2 border-round p-fluid">
+    <form [formGroup]="formGroup">
+      <div class="grid formgrid p-fluid">
+          <div class="field mb-4 col-12">
+              <label for="company_name" class="font-medium text-900">Product Name</label>
+              <input id="company_name" type="text" pInputText>
+          </div>
+          <div class="field mb-4 col-12">
+            <label for="notes" class="font-medium text-900">Product Description</label>
+            <textarea id="notes" pInputTextarea [autoResize]="true" [rows]="5"></textarea>
+          </div>
+          <div class="surface-border border-top-1 opacity-50 mb-4 col-12"></div>
+          <div class="field mb-4 col-12 md:col-4">
+              <label for="item" class="font-medium text-900">Brand</label>
+              <input id="item" type="text" pInputText>
+          </div>
+          <div class="field mb-4 col-12 md:col-4">
+            <label for="item" class="font-medium text-900">Colour</label>
+            <input id="item" type="text" pInputText>
+          </div>
+          <div class="field mb-4 col-12 md:col-4">
+            <label for="item" class="font-medium text-900">Size</label>
+            <input id="item" type="text" pInputText>
+          </div>
+          <div class="field mb-4 col-12 md:col-4">
+            <label for="item" class="font-medium text-900">Category</label>
+            <input id="item" type="text" pInputText>
+          </div>
+          <div class="field mb-4 col-12 md:col-4">
+            <label for="item" class="font-medium text-900">Material</label>
+            <input id="item" type="text" pInputText>
+          </div>
+          <div class="field mb-4 col-12 md:col-4">
+              <label for="item" class="font-medium text-900">Price</label>
+              <p-inputNumber mode="currency" currency="USD" inputId="item" type="text" class="flex-1"></p-inputNumber>
+          </div>
+          <div class="surface-border border-top-1 opacity-50 mb-4 col-12"></div>
+          <div class="field mb-4 col-12">
+            <label for="item" class="font-medium text-900">Images</label>
+            <p-toast></p-toast>
+            <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" [maxFileSize]="1000000">
+              <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                  <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                </ul>
+              </ng-template>
+            </p-fileUpload>
+          </div>
+          <div class="surface-border border-top-1 opacity-50 mb-4 col-12"></div>
+          <div class="field mb-4 col-12">
+            <label for="item" class="font-medium text-900">Shipping Info</label>
+            <input id="item" type="text" pInputText>
+          </div>
+          <div class="field mb-4 col-12">
+            <label for="item" class="font-medium text-900">Highlight</label>
+            <textarea id="notes" pInputTextarea [autoResize]="true" [rows]="3"></textarea>
+        </div>
+          <div class="field mb-4 col-12">
+              <label for="item" class="font-medium text-900">Care</label>
+              <div class="flex align-content-center">
+                <textarea id="notes" pInputTextarea [autoResize]="true" [rows]="3"></textarea>
+              </div>
+          </div>
+          <div class="surface-border border-top-1 opacity-50 mb-4 col-12"></div>
+      </div>
+      <button pButton pRipple label="Create Product" icon="pi pi-file" class="w-auto"></button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,378 @@
+databaseChangeLog:
+  - changeSet:
+     id:  create-initial-tables
+     author:  8bitfix
+     changes:
+       - createSequence:
+           sequenceName: hibernate_sequence
+           dataType: int
+           incrementBy: 1
+           schemaName: public
+           starValue: 1
+       -  createTable:
+            columns:
+              -  column:
+                   name:  ID
+                   type:  NUMBER(10, 0)
+                   constraints:
+                     primaryKey: true
+                     primaryKeyName: PK_CATEGORY
+                     nullable: false
+              -  column:
+                   name: NAME
+                   type: VARCHAR(255)
+            schemaName:  public
+            tableName:  CATEGORY
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_BRAND
+                   nullable: false
+             - column:
+                 name: NAME
+                 type: VARCHAR(255)
+           schemaName: public
+           tableName: BRAND
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_COLOUR
+                   nullable: false
+             - column:
+                 name: NAME
+                 type: VARCHAR(255)
+           schemaName: public
+           tableName: COLOUR
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_MATERIAL
+                   nullable: false
+             - column:
+                 name: NAME
+                 type: VARCHAR(255)
+           schemaName: public
+           tableName: MATERIAL
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_SIZE
+                   nullable: false
+             - column:
+                 name: VALUE
+                 type: VARCHAR(255)
+           schemaName: public
+           tableName: SIZE
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_SHIPPING_INFO
+                   nullable: false
+             - column:
+                 name: NAME
+                 type: VARCHAR(255)
+             - column:
+                 name: DESCRIPTION
+                 type: VARCHAR(255)
+             - column:
+                 name: PRICE
+                 type: NUMBER(10, 2)
+           schemaName: public
+           tableName: SHIPPING_INFO
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_PRODUCT
+                   nullable: false
+             - column:
+                 name: NAME
+                 type: VARCHAR(255)
+             - column:
+                 name: DESCRIPTION
+                 type: VARCHAR(255)
+             - column:
+                 name: PRICE
+                 type: NUMBER(10, 2)
+             - column:
+                 name: BRAND
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_BRAND_PRODUCT
+                   references: BRAND(ID)
+             - column:
+                 name: SHIPPING_INFO
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_SHIPPING_INFO_PRODUCT
+                   references: SHIPPING_INFO(ID)
+             - column:
+                 name: OVERALL_RATING
+                 type: NUMBER(10, 2)
+             - column:
+                 name: TOTAL_REVIEWS
+                 type: NUMBER(10, 0)
+           schemaName: public
+           tableName: PRODUCT
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_IMAGE
+                   nullable: false
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_IMAGE
+                   references: PRODUCT(ID)
+             - column:
+                 name: DESCRIPTION
+                 type: VARCHAR(255)
+             - column:
+                 name: LOCATION
+                 type: VARCHAR(255)
+           schemaName: public
+           tableName: IMAGE
+
+       - createTable:
+           columns:
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_CATEGORY
+                   references: PRODUCT(ID)
+             - column:
+                 name: CATEGORY
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_CATEGORY
+                   references: CATEGORY(ID)
+           schemaName: public
+           tableName: PRODUCT_CATEGORY
+
+       - createTable:
+           columns:
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_COLOUR
+                   references: PRODUCT(ID)
+             - column:
+                 name: COLOUR
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_COLOUR
+                   references: COLOUR(ID)
+           schemaName: public
+           tableName: PRODUCT_COLOUR
+
+       - createTable:
+           columns:
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_MATERIAL
+                   references: PRODUCT(ID)
+             - column:
+                 name: MATERIAL
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_MATERIAL
+                   references: MATERIAL(ID)
+           schemaName: public
+           tableName: PRODUCT_MATERIAL
+
+       - createTable:
+           columns:
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_SIZE
+                   references: PRODUCT(ID)
+             - column:
+                 name: SIZE
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_SIZE
+                   references: SIZE(ID)
+           schemaName: public
+           tableName: PRODUCT_SIZE
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_REVIEW
+                   nullable: false
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_REVIEW
+                   references: PRODUCT(ID)
+             - column:
+                 name: RATING
+                 type: NUMBER(10, 0)
+             - column:
+                 name: VALUE
+                 type: VARCHAR(255)
+           schemaName: public
+           tableName: REVIEW
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_CARE
+                   nullable: false
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_INSTRUCTION
+                   references: PRODUCT(ID)
+             - column:
+                 name: INSTRUCTIONS
+                 type: VARCHAR(255)
+           schemaName: public
+           tableName: CARE
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_HIGHLIGHT
+                   nullable: false
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_HIGHLIGHT
+                   references: PRODUCT(ID)
+             - column:
+                 name: VALUE
+                 type: VARCHAR(255)
+           schemaName: public
+           tableName: HIGHLIGHT
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_STOCK
+                   nullable: false
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_STOCK
+                   references: PRODUCT(ID)
+             - column:
+                 name: SIZE
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_SIZE_STOCK
+                   references: SIZE(ID)
+             - column:
+                 name: COLOUR
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_COLOUR_STOCK
+                   references: COLOUR(ID)
+             - column:
+                 name: AMOUNT
+                 type: NUMBER(10, 0)
+           schemaName: public
+           tableName: STOCK
+
+       - createTable:
+           columns:
+             - column:
+                 name: ID
+                 type: NUMBER(10, 0)
+                 constraints:
+                   primaryKey: true
+                   primaryKeyName: PK_USER_LIKE
+                   nullable: false
+             - column:
+                 name: USER_ID
+                 type: VARCHAR(255)
+                 constraints:
+                   nullable: false
+             - column:
+                 name: PRODUCT
+                 type: NUMBER(10, 0)
+                 constraints:
+                   nullable: false
+                   foreignKeyName: FK_PRODUCT_USER_LIKE
+                   references: PRODUCT(ID)
+           schemaName: public
+           tableName: USER_LIKE
+

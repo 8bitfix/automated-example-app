@@ -1,0 +1,3 @@
+protect the reviews with some one time code against the purchase (table for purchaes with column for flag reviewed - or just a column with a code that will go null once used)
+
+deleting shipping info, sizes, material, colour, category, brand should put the product in undefined

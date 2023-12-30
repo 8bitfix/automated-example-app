@@ -1,0 +1,11 @@
+<div *ngIf="data" class="flex flex-wrap surface-section px-4 py-8 md:px-6 lg:px-8">
+  <div class="w-full md:w-6 px-4 py-8 md:px-6 lg:px-8 surface-900">
+    <div class="text-4xl text-0 mb-3 font-medium">{{data.attributes.title}}</div>
+    <p class="line-height-3 mt-0 mb-7 p-0 text-0 text-2xl">{{data.attributes.text}}</p>
+    <a tabindex="0" (click)="buttonClicked()" pRipple class="text-xl cursor-pointer surface-card text-900 text-center px-5 py-3 border-1 border-gray-200 hover:text-primary transition-duration-150 select-none block w-12rem">
+      {{data.attributes.buttonText}}
+    </a>
+  </div>
+  <div class="w-full md:w-6 bg-no-repeat bg-cover"
+       [ngStyle]="{'background-image': 'url(' + updateImageSource() + ')'}" style="min-height: 400px;"></div>
+</div>

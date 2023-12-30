@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cmsitems",
+  "info": {
+    "singularName": "cmsitem",
+    "pluralName": "cmsitems",
+    "displayName": "cmsitem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}
