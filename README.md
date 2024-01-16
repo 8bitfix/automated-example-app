@@ -1,6 +1,6 @@
-# automated-example-app
+# Automated e-commerce platform development environment setup
 
-This app is a personal e-commernce project in progress, but i thoght I would share the code and whatever other bits the other people might fins useful. 
+This app is a personal e-commernce project in progress, but i thought I would share the code and whatever other bits the other people might fins useful. 
 
 At the moment majority of the time was spent to create a docker-compose file that would install Keycloak and Strapi in a fully automated way and provide simple users and permission mappings that would allow any developer to just pick up and run with it. 
 
